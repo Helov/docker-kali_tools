@@ -10,17 +10,9 @@ RUN set -eux; \
 # deb-src http://mirrors.aliyun.com/kali/ kali-rolling main non-free contrib' >> /etc/apt/sources.list; \
 apt-get update
 
-# solve openjdk8
-RUN set -eux; \
-apt-get install -y software-properties-common python-software-properties; \
-add-apt-repository ppa:openjdk-r/ppa; \
-apt-get update; \
-apt-get install -y openjdk-8-jdk
-
 # install tools
 RUN set -eux; \
-apt-get update; \
-apt-get install -y python sqlmap nmap metasploit-framework vim openssh-server ruby
+apt-get install -y python sqlmap nmap metasploit-framework vim openjdk-11-jdk openssh-server ruby
 
 # sshd config
 RUN set -eux; \
