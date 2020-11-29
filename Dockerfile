@@ -12,6 +12,7 @@ apt-get update
 
 # solve openjdk8
 RUN set -eux; \
+apt-get install -y software-properties-common python-software-properties; \
 add-apt-repository ppa:openjdk-r/ppa; \
 apt-get update; \
 apt-get install -y openjdk-8-jdk
