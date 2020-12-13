@@ -2,19 +2,19 @@ FROM kalilinux/kali-rolling
 
 MAINTAINER "Helov"
 
-# option for aliyun mirror
+# add aliyun mirror
 RUN set -eux; \
-# printf 'deb http://mirrors.cloud.aliyuncs.com/kali/ kali-rolling main non-free contrib\n\
-# deb-src http://mirrors.cloud.aliyuncs.com/kali/ kali-rolling main non-free contrib\n\
-# deb http://mirrors.aliyun.com/kali/ kali-rolling main non-free contrib\n\
-# deb-src http://mirrors.aliyun.com/kali/ kali-rolling main non-free contrib' >> /etc/apt/sources.list; \
+printf 'deb http://mirrors.cloud.aliyuncs.com/kali/ kali-rolling main non-free contrib\n\
+deb-src http://mirrors.cloud.aliyuncs.com/kali/ kali-rolling main non-free contrib\n\
+deb http://mirrors.aliyun.com/kali/ kali-rolling main non-free contrib\n\
+deb-src http://mirrors.aliyun.com/kali/ kali-rolling main non-free contrib' >> /etc/apt/sources.list; \
 apt-get update
 
-# install tools
+# add base tools
 RUN set -eux; \
 apt-get install -y python sqlmap nmap metasploit-framework vim openjdk-11-jdk openssh-server ruby
 
-# sshd config
+# update sshd config
 RUN set -eux; \
 mkdir /var/run/sshd; \
 sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config; \
