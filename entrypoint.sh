@@ -1,3 +1,3 @@
 #!/bin/bash
-/bin/echo "root:$@" | chpasswd;
+/bin/echo "root:toor" | chpasswd;
 /usr/sbin/sshd -D;
