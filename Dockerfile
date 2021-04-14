@@ -25,5 +25,5 @@ WORKDIR data
 
 EXPOSE 22
 
-ENTRYPOINT ["sshd"]
-CMD ["-D"]
+ENTRYPOINT ["/usr/sbin/sshd"]
+CMD ["-d"]
