@@ -17,14 +17,13 @@ apt-get install -y python sqlmap nmap metasploit-framework vim openjdk-11-jdk op
 # update sshd config
 RUN set -eux; \
 mkdir /var/run/sshd; \
-sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config; \
-sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config; \
-sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
+echo "PermitRootLogin yes" >> /etc/ssh/sshd_config; \
+echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config; \
+echo "UsePAM no" >> /etc/ssh/sshd_config
 
-WORKDIR kali-docker
-
-ADD entrypoint.sh /kali-docker/entrypoint.sh
+WORKDIR data
 
 EXPOSE 22
 
-ENTRYPOINT ["/kali-docker/entrypoint.sh"]
+ENTRYPOINT ["sshd"]
+CMD ["-D"]
