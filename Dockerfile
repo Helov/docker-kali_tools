@@ -12,7 +12,7 @@ apt-get update
 
 # add base tools
 RUN set -eux; \
-apt-get install -y python sqlmap nmap metasploit-framework vim openjdk-11-jdk openssh-server ruby
+apt-get install -y python2 sqlmap nmap metasploit-framework vim openjdk-17-jdk openssh-server ruby
 
 # update sshd config
 RUN set -eux; \
